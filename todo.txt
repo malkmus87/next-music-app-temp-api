@@ -1,0 +1,6 @@
+-- Fix issue with loader in css ...DONE
+
+-- Make listsearcher better
+    -- Can probably minimize the number of props required by sending in functions as props instead ...DONE
+    -- Create onClick-event on li  from within the ListSearcher-component
+    

@@ -1,0 +1,23 @@
+FROM node:14.17.6
+ENV NODE_ENV=production
+
+WORKDIR /app
+COPY . .
+
+# If you have native dependencies, you'll need extra tools
+# RUN apk add --no-cache make gcc g++ python
+RUN npm install --prod
+WORKDIR /app/client
+RUN npm install --prod
+RUN rm .eslintrc.json
+RUN npm run build
+# RUN npm rmdir src && npm rmdir public
+WORKDIR /app
+
+# Use this or ... set up web pack config 
+ENV DANGEROUSLY_DISABLE_HOST_CHECK=true
+
+EXPOSE 80
+
+# start app
+CMD ["npm", "start"]
